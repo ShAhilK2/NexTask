@@ -4,7 +4,10 @@ import React from 'react'
 const Page = () => {
   return (
     <View>
-      <Text>Page</Text>
+      <Text>
+        Page
+        
+      </Text>
     </View>
   )
 }

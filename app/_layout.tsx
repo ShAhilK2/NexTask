@@ -19,6 +19,8 @@ const InitialLayout = ()=>{
   const router = useRouter();
   const segments = useSegments();
   const pathName = usePathname();
+
+
   useEffect(()=>{
     if(!isLoaded) return;
     console.log('isLoaded',isLoaded);
@@ -29,19 +31,21 @@ const InitialLayout = ()=>{
 
     if(isSignedIn && !inAuthGroup){
       router.replace('/(authenticated)/(tabs)/today')
-    }else if(!isSignedIn && pathName=== '/'){ 
+    }else if(!isSignedIn && pathName !== '/'){ 
       router.replace("/")
     }
-
-   
-
-  },[isLoaded,isSignedIn])
  
+  
+  },[isLoaded,isSignedIn]);
+
   if(!isLoaded){
     return <View style={{flex:1,justifyContent : "center",alignItems:"center"}}>
       <ActivityIndicator size="large" color={Colors.primary} />
     </View>
   }
+
+ 
+ 
 
   return <Stack screenOptions={{headerShown:false,contentStyle:{backgroundColor:Colors.background}}}>
     <Stack.Screen name='index'/>

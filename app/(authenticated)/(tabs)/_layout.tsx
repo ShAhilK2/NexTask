@@ -1,20 +1,25 @@
-import { Tabs } from "@/components/Tabs";
+import { Colors } from "@/constants/Colors";
+import { Tabs } from "../../../components/Tabs";
 
 export default function TabLayout() {
-  return (
-    <Tabs>
+  return (<Tabs
+  ignoresTopSafeArea
+  hapticsFeedbackEnabled
+  screenOptions={{tabBarActiveTintColor:Colors.primary,tabBarInActiveTintColor:Colors.dark}}>
       <Tabs.Screen
         name="today"
         options={{
           title: "Today",
-          tabBarIcon: () => ({ sfSymbol: "house" }),
+          tabBarIcon: ({focused}) => ({ sfSymbol: focused ? "calendar.circle.fill": "calendar.circle" }),
+    
         }}
       />
       <Tabs.Screen
         name="upcoming"
         options={{
           title: "Upcoming",
-          tabBarIcon: ({focused}) => ({ sfSymbol: focused ? "calendar.circle.fill": "calendar.circle" }),
+
+          tabBarIcon: () => ({ sfSymbol: "calendar" }),
         }}
         
       />
@@ -26,7 +31,7 @@ export default function TabLayout() {
         }}
         
       />
-           <Tabs.Screen
+    <Tabs.Screen
         name="browse"
         options={{
           title: "Browse",
