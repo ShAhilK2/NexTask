@@ -3,8 +3,13 @@ import { router, Stack, usePathname, useRouter, useSegments } from 'expo-router'
 import { tokenCache } from "@/utilis/cache";
 import { Colors } from '@/constants/Colors';
 import { useEffect } from 'react';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, LogBox } from 'react-native';
 import { View } from 'react-native';
+import {GestureHandlerRootView} from "react-native-gesture-handler"
+import  {Toaster} from "sonner-native"
+
+LogBox.ignoreLogs(['Clerk: Clerk has been loaded with development keys']);
+
 
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
@@ -56,7 +61,10 @@ export default function RootLayout() {
   return (
     <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
       <ClerkLoaded>
+        <GestureHandlerRootView style={{flex:1}}>
+          <Toaster /> 
       <InitialLayout />
+        </GestureHandlerRootView>
       </ClerkLoaded>
     </ClerkProvider>
   );

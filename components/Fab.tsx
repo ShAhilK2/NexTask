@@ -1,14 +1,45 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
+import { toast } from 'sonner-native'
+import { Colors } from '@/constants/Colors'
+import Ionicons from '@expo/vector-icons/Ionicons'
+import { useRouter } from 'expo-router'
+import * as Haptics from "expo-haptics";
 
 const Fab = () => {
+
+    const router = useRouter();
+
+    const onPress = ()=>{
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+        // toast.success("Fab Pressed")
+
+        router.push("/task/new");
+    }
   return (
-    <View>
-      <Text>Fab</Text>
-    </View>
+  <TouchableOpacity onPress={onPress} style={styles.fab}>
+   <Ionicons name='add' size={28} color="white"/>
+  </TouchableOpacity>
   )
 }
 
 export default Fab
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    fab:{
+        position:"absolute",
+        bottom:24,
+        right:24,
+        height:56,
+        width:56,
+        zIndex:1000,
+        backgroundColor:Colors.primary,
+        padding:10,
+        borderRadius:50,
+        alignItems:"center",
+        justifyContent:"center",
+        boxShadow: '0px 4px 10px rgba(0,0,0,0.2)',
+
+
+    }
+})

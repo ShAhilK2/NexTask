@@ -8,7 +8,7 @@ const Layout = () => {
     <Stack.Screen name='index' options={{
       title:"Upcoming",
       headerShadowVisible:false,
-      headerRight:()=><MoreButton />
+      headerRight:()=><MoreButton  pageName='Upcoming'/>
     }}/>
     </Stack>
   )
