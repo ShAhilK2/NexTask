@@ -39,6 +39,7 @@ app-example
 
 
 .env
+.env.local
 
 
 ios/
@@ -83,3 +84,4 @@ yarn-error.*
 *.tsbuildinfo
 
 # @end expo-cli
+.env.local

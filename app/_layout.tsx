@@ -1,5 +1,5 @@
 import { ClerkProvider, ClerkLoaded, useAuth } from '@clerk/clerk-expo';
-import { router, Stack, usePathname, useRouter, useSegments } from 'expo-router';
+import { router, Stack, useNavigationContainerRef, usePathname, useRouter, useSegments } from 'expo-router';
 import { tokenCache } from "@/utilis/cache";
 import { Colors } from '@/constants/Colors';
 import { Suspense, useEffect } from 'react';
@@ -17,6 +17,35 @@ import { addDummyData } from '@/utilis/addDummyData';
 import 'text-encoding';
 
 import { useDrizzleStudio } from "expo-drizzle-studio-plugin";
+import * as Sentry from '@sentry/react-native'; //Only in native builds ,not n expo Go 
+
+
+const navigattionIntegration = Sentry.reactNavigationIntegration({
+  enableTimeToInitialDisplay:true,
+})
+Sentry.init({
+  dsn: 'https://71d5bd95ce33e66c7b9c99446679fd4d@o4507033311379456.ingest.us.sentry.io/4508476632465408',
+  enableSpotlight: __DEV__,
+  attachScreenshot : true,
+  tracesSampleRate:1.0,
+  _experiments: {
+    profilesSampleRate:1.0,
+    replaysSessionSampleRate: 1.0, // Change in Production 
+    replaysOnErrorSampleRate: 1.0,
+
+  },
+  integrations: [Sentry.mobileReplayIntegration({
+    maskAllImages : false,
+    maskAllText:false,
+    maskAllVectors:false
+  }),
+navigattionIntegration,
+Sentry.spotlightIntegration()
+],
+
+  // uncomment the line below to enable Spotlight (https://spotlightjs.com)
+  // enableSpotlight: __DEV__,
+});
 LogBox.ignoreLogs(['Clerk: Clerk has been loaded with development keys']);
 
 
@@ -66,7 +95,11 @@ const InitialLayout = ()=>{
   </Stack>
 }
 
-export default function RootLayout() {
+function RootLayout() {
+  const ref = useNavigationContainerRef();
+  useEffect(()=>{
+    navigattionIntegration.registerNavigationContainer(ref);
+  },[ref])
 
   const expoDB = openDatabaseSync('todos');
   const db = drizzle(expoDB);
@@ -101,3 +134,6 @@ export default function RootLayout() {
 function Loading(){
   return <ActivityIndicator size="large" color={Colors.primary} />
 }
+
+
+export default Sentry.wrap(RootLayout);

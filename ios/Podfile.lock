@@ -1715,6 +1715,28 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - RNSentry (6.4.0):
+    - DoubleConversion
+    - glog
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Sentry/HybridSDK (= 8.41.0)
+    - Yoga
   - RNSVG (15.8.0):
     - React-Core
   - RNVectorIcons (10.2.0):
@@ -1743,6 +1765,7 @@ PODS:
   - SDWebImage/Core (5.20.0)
   - SDWebImageSVGCoder (1.8.0):
     - SDWebImage/Core (~> 5.6)
+  - Sentry/HybridSDK (8.41.0)
   - SocketRocket (0.7.1)
   - SwiftUIIntrospect (1.3.0)
   - Yoga (0.0.0)
@@ -1838,6 +1861,7 @@ DEPENDENCIES:
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - "RNSentry (from `../node_modules/@sentry/react-native`)"
   - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - SDWebImage
@@ -1851,6 +1875,7 @@ SPEC REPOS:
     - DGSwiftUtilities
     - SDWebImage
     - SDWebImageSVGCoder
+    - Sentry
     - SocketRocket
     - SwiftUIIntrospect
 
@@ -2031,6 +2056,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSentry:
+    :path: "../node_modules/@sentry/react-native"
   RNSVG:
     :path: "../node_modules/react-native-svg"
   RNVectorIcons:
@@ -2130,10 +2157,12 @@ SPEC CHECKSUMS:
   RNGestureHandler: b356d2872f27ced21f1013e243ea60941ff53073
   RNReanimated: 23d4f6abd47e6342be6a0fcdde435cbfe16a939e
   RNScreens: 456acfe0c2f56462689e0cfe21fe61a3be358a22
+  RNSentry: 4b5f7662d6924772f518d544398b161558cefef3
   RNSVG: 8b1a777d54096b8c2a0fd38fc9d5a454332bbb4d
   RNVectorIcons: faf36b1b5b98e55134dcaebcae2b8b9cc623fb8c
   SDWebImage: 73c6079366fea25fa4bb9640d5fb58f0893facd8
   SDWebImageSVGCoder: 8e10c8f6cc879c7dfb317b284e13dd589379f01c
+  Sentry: 54d0fe6c0df448497c8ed4cce66ccf7027e1823e
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   SwiftUIIntrospect: fee9aa07293ee280373a591e1824e8ddc869ba5d
   Yoga: 7548e4449365bf0ef60db4aefe58abff37fcabec

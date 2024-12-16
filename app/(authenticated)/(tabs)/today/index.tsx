@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, SectionList } from "react-native";
+import { View, Text, StyleSheet, SectionList, Button } from "react-native";
 import React, { useEffect, useState } from "react";
 import Fab from "@/components/Fab";
 import { format } from "date-fns";
@@ -11,13 +11,15 @@ import { Todo } from "@/types/interfaces";
 import TaskRow from "@/components/TaskRow";
 import { Colors } from "@/constants/Colors";
 import { RefreshControl } from "react-native-gesture-handler";
-
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import * as Sentry from "@sentry/react-native";
 interface Section {
   title: string;
   data: Todo[];
 }
 
 const Page = () => {
+
   const db = useSQLiteContext();
   const drizzleDb = drizzle(db);
   useDrizzleStudio(db);
@@ -65,8 +67,13 @@ const Page = () => {
     setSectionListData(listData);
   
   }, [data]);
+
+  const shahilFun = ()=>{
+    throw new Error("Shahil Error")
+  }
+  const {top} = useSafeAreaInsets();
   return (
-    <View style={styles.container}>
+    <View style={[styles.container,{paddingTop: top + 20}]}>
       <SectionList
         showsVerticalScrollIndicator={false}
         contentInsetAdjustmentBehavior="automatic"
@@ -75,7 +82,9 @@ const Page = () => {
         renderSectionHeader={({ section }) => <Text style={styles.header}>{section.title}</Text>}
         refreshControl={<RefreshControl refreshing={false} onRefresh={() => {}} />}
       />
+      <Button title='Try!' onPress={ () => { Sentry.captureException(new Error('First error')) }}/>
 
+<Button title="Shahil Function" onPress={shahilFun}/>
       <Fab />
     </View>
   );
