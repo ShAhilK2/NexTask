@@ -5,6 +5,7 @@ import * as WebBrowser from "expo-web-browser";
 import { SafeAreaInsetsContext, useSafeAreaInsets } from "react-native-safe-area-context";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Colors } from "@/constants/Colors";
+import React from "react";
 
 
 export default function Index() {
