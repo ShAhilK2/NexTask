@@ -35,7 +35,7 @@ export default function TabLayout() {
         name="browse"
         options={{
           title: "Browse",
-          tabBarIcon: ({focused}) => ({ sfSymbol: focused ? "square.grid.2x2.fill" : "square.grid.2x2" }),
+          tabBarIcon: ({focused}) => ({ sfSymbol: focused ? 'doc.text.image.fill' : 'doc.text.image' }),
         }}
         
       />
