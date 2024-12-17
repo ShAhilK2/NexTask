@@ -1,3 +1,4 @@
+
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { useAuth } from '@clerk/clerk-expo';

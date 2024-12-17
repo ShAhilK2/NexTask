@@ -122,4 +122,5 @@ const styles = StyleSheet.create({
         height: 24,
         borderRadius: 12,
     },
+
 });

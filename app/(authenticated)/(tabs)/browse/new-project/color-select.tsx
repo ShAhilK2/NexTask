@@ -1,3 +1,4 @@
+
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { Colors, PROJECT_COLORS } from '@/constants/Colors';
